@@ -1,6 +1,16 @@
 # EcoGestor-Proyecto-POO
 Simulador de gestión de recursos naturales
 
+Integrantes: 
+- Daniela Sofía Murcia Castillo
+- María Alejandra Castro Acuña
+- Daniel Santiago Valderrama Corredor
+- Juliana Andrea Hincapié Sopo
+- Juan Pablo Carrión Munar
+- Juan Diego Londoño Ramírez
+
+
+
 # 🧠 Reglas de Trabajo en Equipo — GitFlow
 
 Este documento define la estrategia de colaboración para el equipo de desarrollo usando **Git** y el flujo **GitFlow**.  
