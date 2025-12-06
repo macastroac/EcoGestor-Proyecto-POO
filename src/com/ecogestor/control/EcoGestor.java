@@ -1,4 +1,4 @@
-// Archivo: src/com/ecogestor/control/EcoGestor.java
+// Archivo:  src/com/ecogestor/control/EcoGestor.java
 package com.ecogestor.control;
 
 import com.ecogestor.modelo.Usuario;
