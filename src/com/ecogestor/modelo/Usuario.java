@@ -1,3 +1,4 @@
+// Archivo: src/com/ecogestor/modelo/Usuario.java
 package com.ecogestor.modelo;
 
 import java.util.ArrayList;
