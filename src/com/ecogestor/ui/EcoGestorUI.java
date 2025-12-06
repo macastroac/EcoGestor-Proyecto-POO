@@ -1,3 +1,4 @@
+// Archivo: src/com/ecogestor/ui/EcoGestorUI.java
 package com.ecogestor.ui;
 
 import com.ecogestor.control.EcoGestor;
