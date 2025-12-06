@@ -1,13 +1,14 @@
-// Archivo: src/com/ecogestor/modelo/Usuario.java
 package com.ecogestor.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario {
-    private String nombre; 
-    private List<Recurso> listaRecursos; 
+
+    private final String nombre; 
+    private final List<Recurso> listaRecursos; 
     private int puntuacion; 
+    private final List<String> historial = new ArrayList<>();
 
     public Usuario(String nombre) {
         this.nombre = nombre;
@@ -18,23 +19,35 @@ public class Usuario {
     public void agregarRecurso(Recurso r) {
         this.listaRecursos.add(r);
     }
-    
-    // Método clave para la UI
+
+    public List<Recurso> getRecursos() {
+        return listaRecursos;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
+    // Registrar uso o reciclaje
     public void registrarConsumo(String nombreRecurso, double cantidad) {
+
         for (Recurso r : listaRecursos) {
             if (r.getNombre().equalsIgnoreCase(nombreRecurso)) {
-                
-                // NOTA: Si es Residuo, queremos llamar a reciclar(). 
-                // Por simplicidad en la UI, si el recurso es Residuo, lo tratamos como reciclaje.
-                if (r instanceof Residuo) {
-                    ((Residuo)r).reciclar(cantidad);
+
+              if (r instanceof Residuo res) {
+                    res.reciclar(cantidad);
                 } else {
-                     r.usar(cantidad);
+                    r.usar(cantidad);
                 }
-                
+
+                agregarAccionAlHistorial("Recurso: " + nombreRecurso + " | Cantidad: " + cantidad);
                 return;
             }
         }
+
+        // Si no se encuentra el recurso, se registra una sola vez
+        agregarAccionAlHistorial("Recurso NO encontrado: " + nombreRecurso);
     }
 
     public double calcularEmisionesCO2Total() {
@@ -49,8 +62,13 @@ public class Usuario {
         this.puntuacion += puntos;
     }
 
+    public void agregarAccionAlHistorial(String accion) {
+        historial.add(accion);
+    }
+
     // Getters
     public String getNombre() { return nombre; }
     public int getPuntuacion() { return puntuacion; }
     public List<Recurso> getListaRecursos() { return listaRecursos; }
+    public List<String> getHistorial() { return historial; }
 }
