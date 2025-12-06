@@ -34,7 +34,8 @@ Usaremos el modelo **GitFlow simplificado**:
 - `feature/xxx` → nuevas funcionalidades  
 - `fix/xxx` → corrección de errores  
 - `release/xxx` → versiones candidatas para producción  
-- `hotfix/xxx` → parches urgentes sobre main  
+- `hotfix/xxx` → parches urgentes sobre main
+- `Actualización/xxx` → versiones aprobadas para muestra final
 
 ---
 
