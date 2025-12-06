@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class EcoGestor {
-    private List<Usuario> listaUsuarios; 
+    private final List<Usuario> listaUsuarios; 
 
     public EcoGestor() {
         this.listaUsuarios = new ArrayList<>();
@@ -26,16 +26,18 @@ public class EcoGestor {
         return null;
     }
 
-    /**
-     * Aplica la lógica del sistema de puntuación.
-     */
+    public List<Usuario> getUsuarios() {
+        return listaUsuarios;
+    }
+
+     //Aplica la lógica del sistema de puntuación.
     public void evaluarConsumo(Usuario u) {
         double impacto = u.calcularEmisionesCO2Total();
-        int puntosObtenidos = 0;
+        int puntosObtenidos;
 
         // Si el impacto es negativo (gracias al reciclaje), sumamos muchos puntos.
         if (impacto < 0) {
-             puntosObtenidos = 100; // ¡Gran EcoGestor!
+             puntosObtenidos = 100;
         } else if (impacto < 10.0) {
             puntosObtenidos = 50; 
         } else if (impacto < 25.0) {
@@ -47,9 +49,7 @@ public class EcoGestor {
         u.sumarPuntos(puntosObtenidos); 
     }
 
-    /**
-     * Calcula el promedio de emisiones de CO2 del resto de usuarios.
-     */
+    // Calcula el promedio de emisiones de CO2 del resto de usuarios.
     public double calcularPromedioGlobalEmisiones(Usuario usuarioExcluido) {
         double sumaEmisiones = 0;
         int contador = 0;
@@ -63,9 +63,7 @@ public class EcoGestor {
         return (contador > 0) ? sumaEmisiones / contador : 0;
     }
 
-    /**
-     * Muestra la lista de usuarios ordenada por su puntuacion (Ranking).
-     */
+    // Muestra la lista de usuarios ordenada por su puntuacion (Ranking).
     public String mostrarRanking() {
         StringBuilder sb = new StringBuilder("--- RANKING GLOBAL ---\n");
         listaUsuarios.sort(Comparator.comparing(Usuario::getPuntuacion).reversed());
