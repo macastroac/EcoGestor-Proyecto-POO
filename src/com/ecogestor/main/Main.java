@@ -6,7 +6,7 @@ import com.ecogestor.modelo.Agua;
 import com.ecogestor.modelo.Energia;
 import com.ecogestor.modelo.Residuo;
 import com.ecogestor.modelo.Usuario;
-import com.ecogestor.ui.EcoGestorUI;
+import com.ecogestor.ui.BienvenidaUI;
 import javax.swing.SwingUtilities;
 
 public class Main {
@@ -39,6 +39,6 @@ public class Main {
         u3.agregarRecurso(new Energia("Luz Finca", 100.0, "Fósil"));
         
         // 4. Ejecución de la Interfaz Gráfica
-        SwingUtilities.invokeLater(() -> new EcoGestorUI(gestor));
+        SwingUtilities.invokeLater(() -> new BienvenidaUI(gestor));
     }
 }
